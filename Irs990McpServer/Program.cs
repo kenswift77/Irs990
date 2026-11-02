@@ -1,6 +1,5 @@
 using Irs990McpServer.Data;
 using Irs990McpServer.Middleware;
-using Irs990McpServer.Tools;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +28,6 @@ if (!string.IsNullOrWhiteSpace(aiConnStr))
 // -----------------------------------------------------------------------
 // Data layer
 // -----------------------------------------------------------------------
-builder.Services.AddSingleton<FilingRepository>();
 builder.Services.AddSingleton<McpClientRepository>();  // API key auth + request logging
 
 // -----------------------------------------------------------------------
@@ -38,11 +36,7 @@ builder.Services.AddSingleton<McpClientRepository>();  // API key auth + request
 builder.Services
     .AddMcpServer(opts =>
     {
-        // NOTE: In ModelContextProtocol v2.x the type was renamed from
-        // ModelContextProtocol.Protocol.Types.Implementation
-        // to ModelContextProtocol.Protocol.Types.McpServerInfo (or similar).
-        // If this fails to compile, check the v2.x API reference and update the type.
-        opts.ServerInfo = new ModelContextProtocol.Protocol.Types.Implementation
+        opts.ServerInfo = new ModelContextProtocol.Protocol.Implementation
         {
             Name    = "IRS990McpServer",
             Version = "1.0.0"
