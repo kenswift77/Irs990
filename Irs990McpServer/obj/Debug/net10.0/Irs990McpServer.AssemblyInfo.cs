@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Irs990McpServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab26309fc8c5771c0edad55b98b63f3c1e97ae5d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+068ca0704a15f2a225314e32e95ebc3fe77fbfa7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Irs990McpServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Irs990McpServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
