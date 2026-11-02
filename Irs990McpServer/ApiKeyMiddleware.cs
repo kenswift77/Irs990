@@ -27,8 +27,11 @@ public sealed class ApiKeyMiddleware(
 
     public async Task InvokeAsync(HttpContext context)
     {
-        // Always let health probes through
-        if (context.Request.Path.StartsWithSegments("/health"))
+        // Always let health probes and the root redirect through — no key needed
+        var path = context.Request.Path;
+        if (path.StartsWithSegments("/health") ||
+            path == "/" ||
+            path == "/favicon.ico")
         {
             await next(context);
             return;
