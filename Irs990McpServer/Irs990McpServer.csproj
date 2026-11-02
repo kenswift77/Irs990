@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Irs990McpServer</RootNamespace>
+    <AssemblyName>Irs990McpServer</AssemblyName>
+    <UserSecretsId>irs990-mcp-server</UserSecretsId>
+
+    <!-- Azure App Service on Linux publishes as self-contained or framework-dependent.
+         Framework-dependent is smaller and faster to deploy; the App Service runtime
+         supplies .NET 10.  Switch to true + add RuntimeIdentifier if you prefer
+         a self-contained binary. -->
+    <PublishSingleFile>false</PublishSingleFile>
+    <SelfContained>false</SelfContained>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- MCP .NET SDK — SSE / HTTP transport lives in the AspNetCore package -->
+    <!-- Latest stable: v2.3.0 (Oct 2026).  Verify on nuget.org/profiles/ModelContextProtocol -->
+    <PackageReference Include="ModelContextProtocol"            Version="2.3.0" />
+    <PackageReference Include="ModelContextProtocol.AspNetCore" Version="2.3.0" />
+
+    <!-- Database -->
+    <PackageReference Include="Dapper"                  Version="2.1.66"  />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2"  />
+
+    <!-- Azure Managed Identity (no password in production) -->
+    <PackageReference Include="Azure.Identity" Version="1.13.1" />
+
+    <!-- Observability — optional; remove if you don't use Application Insights -->
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
+  </ItemGroup>
+
+</Project>
